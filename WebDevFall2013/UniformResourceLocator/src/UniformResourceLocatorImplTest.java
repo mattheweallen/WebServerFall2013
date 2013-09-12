@@ -153,5 +153,12 @@ public class UniformResourceLocatorImplTest {
 		fail("Not yet implemented");
 		//assertEquals("blarg",url.toString());
 	}
+	
+	@Test
+	public final void testNormalizeQuery() {
+		UniformResourceLocatorImpl urli = new UniformResourceLocatorImpl();
+		assertEquals("safe%3Dactiv%2B%26q%3Dl%3Fon", urli.normalizeQuery("safe=activ+&q=l?on"));
+		
+	}
 
 }
