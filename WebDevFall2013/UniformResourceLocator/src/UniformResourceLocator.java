@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @author matthew 
+ * @author Matthew Allen 
  */
 
 public interface UniformResourceLocator {

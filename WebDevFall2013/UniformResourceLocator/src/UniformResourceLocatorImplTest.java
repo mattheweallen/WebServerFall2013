@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * @author matthew
+ * @author Matthew Allen
  *
  */
 public class UniformResourceLocatorImplTest {
@@ -76,7 +76,9 @@ public class UniformResourceLocatorImplTest {
 	 */
 	@Test
 	public final void testGetQuery() {
-		fail("Not yet implemented"); // TODO
+		assertTrue(url.getQuery().size() == 2);
+		assertEquals("lion", url.getQuery().get("q"));
+		assertEquals("active", url.getQuery().get("safe"));
 	}
 
 	/**
@@ -141,6 +143,15 @@ public class UniformResourceLocatorImplTest {
 	@Test
 	public final void testFragment() {
 		fail("Not yet implemented"); // TODO
+	}
+	
+	/**
+	 * Test method for {@link UniformResourceLocator#toString()}.
+	 */
+	@Test
+	public final void testToString() {
+		fail("Not yet implemented");
+		//assertEquals("blarg",url.toString());
 	}
 
 }

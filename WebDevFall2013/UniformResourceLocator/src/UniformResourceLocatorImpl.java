@@ -1,14 +1,11 @@
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 /**
- * 
- */
-
-/**
- * @author matthew
+ * @author Matthew Allen
  *
  */
 
@@ -61,14 +58,21 @@ public class UniformResourceLocatorImpl implements UniformResourceLocator {
 
 	@Override
 	public String getFragment() {
-		// TODO Auto-generated method stub
 		return fragment;
+	}
+
+	/**
+	 * This method concatenates all the parts of the url, and returns it as a String.
+	 * 
+	 * @return the url as a String 
+	 */
+	public String toString() throws IllegalStateException {
+		return "blarg";
 	}
 
 	@Override
 	public URL toURL() throws IllegalStateException {
-		// TODO Auto-generated method stub
-		return null;
+		return new URL(this.toString());
 	}
 
 	@Override
