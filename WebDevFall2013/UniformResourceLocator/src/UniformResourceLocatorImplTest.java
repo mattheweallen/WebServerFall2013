@@ -157,7 +157,7 @@ public class UniformResourceLocatorImplTest {
 	@Test
 	public final void testNormalizeQuery() {
 		UniformResourceLocatorImpl urli = new UniformResourceLocatorImpl();
-		assertEquals("safe%3Dactiv%2B%26q%3Dl%3Fon", urli.normalizeQuery("safe=activ+&q=l?on"));
+		assertEquals("safe%3Dactiv%2B%26q%3Dl%3Fon", urli.encodeQuery("safe=activ+&q=l?on"));
 		
 	}
 

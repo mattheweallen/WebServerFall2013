@@ -95,7 +95,7 @@ public class UniformResourceLocatorImpl implements UniformResourceLocator {
 		return "blarg";
 	}
 	
-	public String normalizeQuery(String q) {
+	public String encodeQuery(String q) {
 		for (int i=0; i < queryEncodeMap.size(); i++) {
 			String key = (String)queryEncodeMap.keySet().toArray()[i];
 			String val = (String)queryEncodeMap.values().toArray()[i];
