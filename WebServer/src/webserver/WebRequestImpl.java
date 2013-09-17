@@ -6,13 +6,13 @@ package webserver;
 import java.util.Set;
 
 /**
- * @author meallen
+ * @author Matthew Allen
  *
  */
 public class WebRequestImpl implements WebRequest {
 
-	/* (non-Javadoc)
-	 * @see webserver.WebRequest#setMethod(java.lang.String)
+	/** 
+	 * 
 	 */
 	@Override
 	public void setMethod(String method) {
@@ -20,8 +20,8 @@ public class WebRequestImpl implements WebRequest {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see webserver.WebRequest#setPath(java.lang.String)
+	/**
+	 * 
 	 */
 	@Override
 	public void setPath(String path) {
