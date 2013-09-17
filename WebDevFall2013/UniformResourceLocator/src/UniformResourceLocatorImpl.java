@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * This class implements UniformResourceLocator, and is a representation of a URL.
@@ -130,8 +131,41 @@ public class UniformResourceLocatorImpl implements UniformResourceLocator {
 	 * @throws IllegalStateException
 	 */
 	public String toString() throws IllegalStateException {
-		//if()
-		return "blarg";
+		String urlString = "";
+		if(scheme != null && host !=null && path != null) {
+			urlString = scheme.toLowerCase() + "://" + host.toLowerCase();
+			if(port != null) {
+				urlString = urlString + ":" + port;
+			}
+			if(path != null) {
+				if(path.startsWith( "/")) {
+					path.replaceFirst("/","");
+				}
+				if(!path.equals("")) {
+					urlString = urlString + "/" + path;
+				}
+			}
+			if(getQueryKeys().size() > 0) {
+				TreeSet<String> ts = new TreeSet<String>(getQueryKeys());
+				
+				urlString = urlString + "?";
+				String queryString = "";
+				for(String s : ts) {
+					queryString = queryString + s + "=" + getQueryValue(s);
+					if(!s.equals(ts.last())) {
+						queryString = queryString + "&";
+					}
+				}
+				queryString = encodeQuery(queryString);
+				urlString = urlString + queryString;
+			}
+			if(fragment != null) {
+				urlString = urlString + "#" + fragment;
+			}
+		} else {
+			throw new IllegalStateException();
+		}
+		return urlString;
 	}
 	
 	/**
@@ -140,7 +174,7 @@ public class UniformResourceLocatorImpl implements UniformResourceLocator {
      * @param q String representation of query.
      * @return String with special characters encoded
      */
-	public String encodeQuery(String q) {
+	private String encodeQuery(String q) {
 		for (int i=0; i < queryEncodeMap.size(); i++) {
 			String key = (String)queryEncodeMap.keySet().toArray()[i];
 			String val = (String)queryEncodeMap.values().toArray()[i];
