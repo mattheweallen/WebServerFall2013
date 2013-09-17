@@ -6,13 +6,16 @@ package webserver;
 import java.util.Set;
 
 /**
+ * This class implements WebRequest. 
+ * 
  * @author Matthew Allen
- *
+ * 
  */
 public class WebRequestImpl implements WebRequest {
 
 	/** 
 	 * 
+	 * @param method 
 	 */
 	@Override
 	public void setMethod(String method) {
@@ -38,8 +41,9 @@ public class WebRequestImpl implements WebRequest {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see webserver.WebRequest#getMethod()
+	/**
+	 * 
+	 * @return method String
 	 */
 	@Override
 	public String getMethod() {
