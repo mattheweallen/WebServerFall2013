@@ -15,6 +15,7 @@ public class WebRequestImpl implements WebRequest {
 
 	/** 
 	 * 
+	 * 
 	 * @param method 
 	 */
 	@Override
@@ -25,6 +26,7 @@ public class WebRequestImpl implements WebRequest {
 
 	/**
 	 * 
+	 * @param path
 	 */
 	@Override
 	public void setPath(String path) {
