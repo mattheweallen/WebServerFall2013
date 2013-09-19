@@ -9,12 +9,10 @@ import java.util.Set;
  * This class implements WebRequest. 
  * 
  * @author Matthew Allen
- * Test
  */
 public class WebRequestImpl implements WebRequest {
 
 	/** 
-	 * 
 	 * 
 	 * @param method 
 	 */
@@ -34,8 +32,9 @@ public class WebRequestImpl implements WebRequest {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see webserver.WebRequest#setVersion(java.lang.String)
+	/**
+	 * 
+	 * @param version String
 	 */
 	@Override
 	public void setVersion(String version) {
@@ -53,8 +52,9 @@ public class WebRequestImpl implements WebRequest {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see webserver.WebRequest#getPath()
+	/**
+	 * 
+	 * @return path String
 	 */
 	@Override
 	public String getPath() {
@@ -62,8 +62,9 @@ public class WebRequestImpl implements WebRequest {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see webserver.WebRequest#getVersion()
+	/**
+	 * 
+	 * @return version String
 	 */
 	@Override
 	public String getVersion() {
@@ -71,8 +72,10 @@ public class WebRequestImpl implements WebRequest {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see webserver.WebRequest#addHeader(java.lang.String, java.lang.String)
+	/**
+	 * 
+	 * @param name String
+	 * @param value String
 	 */
 	@Override
 	public void addHeader(String name, String value) {
@@ -80,8 +83,10 @@ public class WebRequestImpl implements WebRequest {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see webserver.WebRequest#getHeader(java.lang.String)
+	/**
+	 * 
+	 * @param name String
+	 * @return 
 	 */
 	@Override
 	public String getHeader(String name) {
@@ -89,13 +94,34 @@ public class WebRequestImpl implements WebRequest {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see webserver.WebRequest#getHeaderNames()
+	/**
+	 * 
+	 * @return headerNames Set<String>
 	 */
 	@Override
 	public Set<String> getHeaderNames() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	/**
+	 * 
+	 * @return url UniformResourceLocator
+	 */
+	@Override
+	public UniformResourceLocator getUrl() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param url UniformResourceLocator
+	 */
+	@Override
+	public void setUrl(UniformResourceLocator url) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
