@@ -3,6 +3,8 @@
  */
 package webserver;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -12,7 +14,10 @@ import java.util.Set;
  */
 public class WebRequestImpl implements WebRequest {
 
+	private Map<String, String> headerMap = new HashMap<String,String>();
+	
 	/** 
+	 * set the method for the request message request line.
 	 * 
 	 * @param method 
 	 */
@@ -23,6 +28,7 @@ public class WebRequestImpl implements WebRequest {
 	}
 
 	/**
+	 * set the path for the resource indicated in the request message request line.
 	 * 
 	 * @param path
 	 */
@@ -33,6 +39,7 @@ public class WebRequestImpl implements WebRequest {
 	}
 
 	/**
+	 * set the version for http spec indicated in the request message request line.
 	 * 
 	 * @param version String
 	 */
@@ -43,6 +50,7 @@ public class WebRequestImpl implements WebRequest {
 	}
 
 	/**
+	 * get the method for the request message request line.
 	 * 
 	 * @return method String
 	 */
@@ -53,6 +61,7 @@ public class WebRequestImpl implements WebRequest {
 	}
 
 	/**
+	 * get the path for the resource indicated in the request message request line.
 	 * 
 	 * @return path String
 	 */
@@ -63,6 +72,7 @@ public class WebRequestImpl implements WebRequest {
 	}
 
 	/**
+	 * get the version for http spec indicated in the request message request line.
 	 * 
 	 * @return version String
 	 */
@@ -73,17 +83,22 @@ public class WebRequestImpl implements WebRequest {
 	}
 
 	/**
+	 * This method puts a header field, which is a name value pair into headerMap.
+	 * headerMap will be used in getHeader to generate name value pairs separated by colon, 
+	 * and terminated with carriage return and line feed.  
 	 * 
 	 * @param name String
 	 * @param value String
 	 */
 	@Override
 	public void addHeader(String name, String value) {
-		// TODO Auto-generated method stub
-
+		headerMap.put(name, value);
 	}
 
 	/**
+	 * get the header, which will consist of the name value pair request headers from headerMap.
+	 * The name value pairs will be separated by a colon, and terminated with the carriage return and line feed \r\n where \r is carriage return \n is line feed.
+	 * The end of the header will be indicated by two consecutive carriage return line feed pairs.
 	 * 
 	 * @param name String
 	 * @return 
