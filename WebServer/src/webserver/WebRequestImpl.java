@@ -13,8 +13,12 @@ import java.util.Set;
  * @author Matthew Allen
  */
 public class WebRequestImpl implements WebRequest {
-
-	private Map<String, String> headerMap = new HashMap<String,String>();
+	private String method;
+	private Map<String, String> headerFields = new HashMap<String,String>();
+	private String path;
+	private String version;
+	private UniformResourceLocator url;
+	
 	
 	/** 
 	 * set the method for the request message request line.
@@ -23,8 +27,7 @@ public class WebRequestImpl implements WebRequest {
 	 */
 	@Override
 	public void setMethod(String method) {
-		// TODO Auto-generated method stub
-
+		this.method = method;
 	}
 
 	/**
@@ -34,8 +37,7 @@ public class WebRequestImpl implements WebRequest {
 	 */
 	@Override
 	public void setPath(String path) {
-		// TODO Auto-generated method stub
-
+		this.path = path;
 	}
 
 	/**
@@ -45,8 +47,7 @@ public class WebRequestImpl implements WebRequest {
 	 */
 	@Override
 	public void setVersion(String version) {
-		// TODO Auto-generated method stub
-
+		this.version = version;
 	}
 
 	/**
@@ -56,8 +57,7 @@ public class WebRequestImpl implements WebRequest {
 	 */
 	@Override
 	public String getMethod() {
-		// TODO Auto-generated method stub
-		return null;
+		return method;
 	}
 
 	/**
@@ -67,8 +67,7 @@ public class WebRequestImpl implements WebRequest {
 	 */
 	@Override
 	public String getPath() {
-		// TODO Auto-generated method stub
-		return null;
+		return path;
 	}
 
 	/**
@@ -78,13 +77,12 @@ public class WebRequestImpl implements WebRequest {
 	 */
 	@Override
 	public String getVersion() {
-		// TODO Auto-generated method stub
-		return null;
+		return version;
 	}
 
 	/**
-	 * This method puts a header field, which is a name value pair into headerMap.
-	 * headerMap will be used in getHeader to generate name value pairs separated by colon, 
+	 * This method puts a header field, which is a name value pair into headerFields.
+	 * headerFields will be used in getHeader to generate name value pairs separated by colon, 
 	 * and terminated with carriage return and line feed.  
 	 * 
 	 * @param name String
@@ -92,11 +90,11 @@ public class WebRequestImpl implements WebRequest {
 	 */
 	@Override
 	public void addHeader(String name, String value) {
-		headerMap.put(name, value);
+		headerFields.put(name, value);
 	}
 
 	/**
-	 * get the header, which will consist of the name value pair request headers from headerMap.
+	 * get the header, which will consist of the name value pair request headers from headerFields.
 	 * The name value pairs will be separated by a colon, and terminated with the carriage return and line feed \r\n where \r is carriage return \n is line feed.
 	 * The end of the header will be indicated by two consecutive carriage return line feed pairs.
 	 * 
@@ -110,33 +108,33 @@ public class WebRequestImpl implements WebRequest {
 	}
 
 	/**
+	 * return all the names of the fields that are in headerFields 
 	 * 
 	 * @return headerNames Set<String>
 	 */
 	@Override
 	public Set<String> getHeaderNames() {
-		// TODO Auto-generated method stub
-		return null;
+		return headerFields.keySet();
 	}
 
 	/**
+	 * get the url
 	 * 
 	 * @return url UniformResourceLocator
 	 */
 	@Override
 	public UniformResourceLocator getUrl() {
-		// TODO Auto-generated method stub
-		return null;
+		return url;
 	}
 
 	/**
+	 * set the url
 	 * 
 	 * @param url UniformResourceLocator
 	 */
 	@Override
 	public void setUrl(UniformResourceLocator url) {
-		// TODO Auto-generated method stub
-		
+		this.url = url;
 	}
 
 }
