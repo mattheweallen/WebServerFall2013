@@ -11,6 +11,7 @@ import java.util.Set;
  * This class implements WebRequest. 
  * 
  * @author Matthew Allen
+ * @version September 19, 2013
  */
 public class WebRequestImpl implements WebRequest {
 	private String method;
@@ -81,9 +82,7 @@ public class WebRequestImpl implements WebRequest {
 	}
 
 	/**
-	 * This method puts a header field, which is a name value pair into headerFields.
-	 * headerFields will be used in getHeader to generate name value pairs separated by colon, 
-	 * and terminated with carriage return and line feed.  
+	 * This method puts a header field, which is a name value pair into headerFields. 
 	 * 
 	 * @param name String
 	 * @param value String
@@ -94,17 +93,14 @@ public class WebRequestImpl implements WebRequest {
 	}
 
 	/**
-	 * get the header, which will consist of the name value pair request headers from headerFields.
-	 * The name value pairs will be separated by a colon, and terminated with the carriage return and line feed \r\n where \r is carriage return \n is line feed.
-	 * The end of the header will be indicated by two consecutive carriage return line feed pairs.
+	 * This method returns header value based on name.
 	 * 
 	 * @param name String
 	 * @return 
 	 */
 	@Override
 	public String getHeader(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return headerFields.get(name);
 	}
 
 	/**
