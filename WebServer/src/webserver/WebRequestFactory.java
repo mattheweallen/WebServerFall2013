@@ -19,7 +19,7 @@ public class WebRequestFactory {
 	 * createRequest builds a WebRequest based on bufferedReader.
 	 * 
 	 * @param bufferedReader
-	 * @return
+	 * @return webRequest
 	 * @throws IOException 
 	 */
 	public static WebRequest createRequest(BufferedReader bufferedReader) throws IOException {
@@ -33,8 +33,9 @@ public class WebRequestFactory {
 		
 		while(!(sCurrentLine = bufferedReader.readLine()).equals("")) {
 			String[] requestHeader = sCurrentLine.split(":");
-			webRequest.addHeader(requestHeader[0], requestHeader[0]);
+			webRequest.addHeader(requestHeader[0].trim(), requestHeader[1].trim());
 		}
+		
 		return webRequest;
 	}
 }
