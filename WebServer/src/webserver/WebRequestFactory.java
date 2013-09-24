@@ -29,12 +29,27 @@ public class WebRequestFactory {
 
 		webRequest.setMethod(requestLine[0].trim());
 		webRequest.setPath(requestLine[1].trim());
+		System.out.println(webRequest.getPath());
 		webRequest.setVersion(requestLine[2].trim());
 		
 		while(!(sCurrentLine = bufferedReader.readLine()).equals("")) {
 			String[] requestHeader = sCurrentLine.split(":");
 			webRequest.addHeader(requestHeader[0].trim(), requestHeader[1].trim());
 		}
+		
+		String[] pathArr = webRequest.getPath().split("?");
+		UniformResourceLocator url = new UniformResourceLocatorImpl()
+										.scheme("http")
+										.host("localhost")
+										.port(88)
+										.path(pathArr[0]);
+		
+		
+		String[] queryArr = pathArr[1].split("&");
+		for(int i = 0; i < queryArr.length; i++) {
+			url = url.queryParameter(key, value)
+		}
+										
 		
 		return webRequest;
 	}
