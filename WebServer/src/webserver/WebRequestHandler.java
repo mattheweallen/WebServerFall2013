@@ -29,7 +29,12 @@ public class WebRequestHandler {
 			
 		}
 		
-		dataOutputStream.writeBytes("<html><head><title>My Super Awesome Math Page</title></head><body>");
+		String color = "grey";
+		
+		dataOutputStream.writeBytes("<html><head><title>My Super Awesome Math Page</title>");
+		dataOutputStream.writeBytes("<style>");
+		dataOutputStream.writeBytes("table {background-color:" + color + "; text-align:left;} table, th, td { border: 1px solid black;}");
+		dataOutputStream.writeBytes("</style></head><body>");
 		dataOutputStream.writeBytes("<table><tr><th>NAME</th><th>VALUE</th></tr>");   
 		dataOutputStream.writeBytes("<tr>" + "<td>" + "method" + "</td>" +"<td>" + webRequest.getMethod() + "</td>" +"</tr>");
 		dataOutputStream.writeBytes("<tr>" + "<td>" + "path" + "</td>" +"<td>" + webRequest.getPath() + "</td>" +"</tr>");
