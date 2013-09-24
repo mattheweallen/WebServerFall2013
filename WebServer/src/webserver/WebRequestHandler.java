@@ -4,6 +4,7 @@
 package webserver;
 
 import java.io.DataOutputStream;
+import java.io.IOException;
 
 /**
  * The purpose of WebRequestHandler class is to generate a valid HTTP response.
@@ -18,9 +19,13 @@ public class WebRequestHandler {
 	 * 
 	 * @param webRequest
 	 * @param dataOutputStream
+	 * @throws IOException 
 	 */
-	public void handleRequest(WebRequest webRequest, DataOutputStream dataOutputStream) {
-		
+	public void handleRequest(WebRequest webRequest, DataOutputStream dataOutputStream) throws IOException {
+		dataOutputStream.writeBytes(webRequest.getVersion().trim()  + " 200 OK" + "\n");
+		dataOutputStream.writeBytes("Content-Type: text/html\n");
+		dataOutputStream.writeBytes("\n");
+		dataOutputStream.writeBytes("<html><head><title>An Example Page</title></head><body>Hello World, this is a very simple HTML document.</body></html>");
 	}
 	
 //	

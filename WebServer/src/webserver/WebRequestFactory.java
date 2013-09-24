@@ -34,6 +34,7 @@ public class WebRequestFactory {
 		while(!(sCurrentLine = bufferedReader.readLine()).equals("")) {
 			String[] requestHeader = sCurrentLine.split(":");
 			webRequest.addHeader(requestHeader[0].trim(), requestHeader[1].trim());
+			//System.out.println(requestHeader[0].trim() +": " + requestHeader[1].trim());
 		}
 		
 		String[] pathArr = webRequest.getPath().split("\\?");
