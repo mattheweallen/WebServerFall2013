@@ -25,7 +25,20 @@ public class WebRequestHandler {
 		dataOutputStream.writeBytes(webRequest.getVersion().trim()  + " 200 OK" + "\n");
 		dataOutputStream.writeBytes("Content-Type: text/html\n");
 		dataOutputStream.writeBytes("\n");
-		dataOutputStream.writeBytes("<html><head><title>An Example Page</title></head><body>Hello World, this is a very simple HTML document.</body></html>");
+		if(webRequest.getUrl().getPath().equals("math/add")) {
+			
+		}
+		
+		dataOutputStream.writeBytes("<html><head><title>My Super Awesome Math Page</title></head><body>");
+		dataOutputStream.writeBytes("<table><tr><th>NAME</th><th>VALUE</th></tr>");   
+		dataOutputStream.writeBytes("<tr>" + "<td>" + "method" + "</td>" +"<td>" + webRequest.getMethod() + "</td>" +"</tr>");
+		dataOutputStream.writeBytes("<tr>" + "<td>" + "path" + "</td>" +"<td>" + webRequest.getPath() + "</td>" +"</tr>");
+		dataOutputStream.writeBytes("<tr>" + "<td>" + "version" + "</td>" +"<td>" + webRequest.getVersion() + "</td>" +"</tr>");
+		
+		
+		dataOutputStream.writeBytes("</table>");
+		
+		dataOutputStream.writeBytes("</body></html>");
 	}
 	
 //	
