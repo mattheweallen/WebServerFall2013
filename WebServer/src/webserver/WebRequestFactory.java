@@ -47,7 +47,7 @@ public class WebRequestFactory {
 		
 		String[] queryArr = pathArr[1].split("&");
 		for(int i = 0; i < queryArr.length; i++) {
-			url = url.queryParameter(key, value)
+			url = url.queryParameter(queryArr[i].split("=")[0], queryArr[i].split("=")[1]);
 		}
 										
 		
