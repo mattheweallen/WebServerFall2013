@@ -40,6 +40,9 @@ public class WebRequestHandler {
 		dataOutputStream.writeBytes("<tr>" + "<td>" + "path" + "</td>" +"<td>" + webRequest.getPath() + "</td>" +"</tr>");
 		dataOutputStream.writeBytes("<tr>" + "<td>" + "version" + "</td>" +"<td>" + webRequest.getVersion() + "</td>" +"</tr>");
 		
+		for(String s : webRequest.getHeaderNames()) {
+			dataOutputStream.writeBytes("<tr>" + "<td>" + s + "</td>" +"<td>" + webRequest.getHeader(s) + "</td>" +"</tr>");
+		}
 		
 		dataOutputStream.writeBytes("</table>");
 		
