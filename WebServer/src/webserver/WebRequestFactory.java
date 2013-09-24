@@ -29,7 +29,6 @@ public class WebRequestFactory {
 
 		webRequest.setMethod(requestLine[0].trim());
 		webRequest.setPath(requestLine[1].trim());
-		System.out.println(webRequest.getPath());
 		webRequest.setVersion(requestLine[2].trim());
 		
 		while(!(sCurrentLine = bufferedReader.readLine()).equals("")) {
@@ -37,7 +36,7 @@ public class WebRequestFactory {
 			webRequest.addHeader(requestHeader[0].trim(), requestHeader[1].trim());
 		}
 		
-		String[] pathArr = webRequest.getPath().split("?");
+		String[] pathArr = webRequest.getPath().split("\\?");
 		UniformResourceLocator url = new UniformResourceLocatorImpl()
 										.scheme("http")
 										.host("localhost")
@@ -47,9 +46,9 @@ public class WebRequestFactory {
 		
 		String[] queryArr = pathArr[1].split("&");
 		for(int i = 0; i < queryArr.length; i++) {
-			url = url.queryParameter(queryArr[i].split("=")[0], queryArr[i].split("=")[1]);
+			url = url.queryParameter(queryArr[i].split("\\=")[0], queryArr[i].split("\\=")[1]);
 		}
-										
+		webRequest.setUrl(url);							
 		
 		return webRequest;
 	}

@@ -141,7 +141,7 @@ public class UniformResourceLocatorImpl implements UniformResourceLocator {
 			}
 			if(path != null) {
 				if(path.startsWith( "/")) {
-					path.replaceFirst("/","");
+					path = path.replaceFirst("\\/","");
 				}
 				if(!path.equals("")) {
 					urlString = urlString + "/" + path;
