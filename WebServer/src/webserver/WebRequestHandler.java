@@ -178,8 +178,8 @@ public class WebRequestHandler {
 		String color = "gray";
 		boolean error = false;
 		
-		System.out.println("y = " + webRequest.getUrl().getQueryValue("y"));
-		System.out.println("x = " + webRequest.getUrl().getQueryValue("x"));
+//		System.out.println("y = " + webRequest.getUrl().getQueryValue("y"));
+//		System.out.println("x = " + webRequest.getUrl().getQueryValue("x"));
 		
 		if(webRequest.getUrl().getQueryValue("x") != null) {
 			if(isInteger(webRequest.getUrl().getQueryValue("x"))) {
@@ -205,19 +205,28 @@ public class WebRequestHandler {
 			}
 		}
 		
+		Integer sum = 0;
+		if(webRequest.getUrl().getPath().equals("/math/add")) {
+			sum = x + y;
+		} else if (webRequest.getUrl().getPath().equals("/math/sub")) {
+			sum = x - y;
+		} else {
+			error = true;
+		}
+		
+		if(!"get".equals(webRequest.getMethod().trim().toLowerCase())) {
+			error = true;
+		}
+		
 		if(!error) {
-			Integer sum = 0;
+			
 			dataOutputStream.writeBytes(webRequest.getVersion().trim()  + " 200 OK" + "\n");
 			dataOutputStream.writeBytes("Content-Type: text/html\n");
 			dataOutputStream.writeBytes("\n");
 			
-			System.out.println("Path = " + webRequest.getUrl().getPath());
+			//System.out.println("Path = " + webRequest.getUrl().getPath());
 			
-			if(webRequest.getUrl().getPath().equals("/math/add")) {
-				sum = x + y;
-			} else if (webRequest.getUrl().getPath().equals("/math/sub")) {
-				sum = x - y;
-			}
+			
 			
 			
 			
@@ -240,6 +249,10 @@ public class WebRequestHandler {
 			dataOutputStream.writeBytes("</h1>");
 			
 			dataOutputStream.writeBytes("</body></html>");
+		} else {
+			dataOutputStream.writeBytes(webRequest.getVersion().trim()  + " 404 Not Found" + "\n");
+			dataOutputStream.writeBytes("Content-Type: text/html\n");
+			//dataOutputStream.writeBytes("\n");
 		}
 	}
 	

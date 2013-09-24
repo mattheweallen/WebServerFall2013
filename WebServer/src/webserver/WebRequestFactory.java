@@ -44,10 +44,16 @@ public class WebRequestFactory {
 										.port(88)
 										.path(pathArr[0]);
 		
+//		System.out.println("Path = " + webRequest.getPath());
+//		System.out.println("pathArr Size = " + pathArr.length);
+//		System.out.println("PathArr[0] = " + pathArr[0]);
 		
-		String[] queryArr = pathArr[1].split("&");
-		for(int i = 0; i < queryArr.length; i++) {
-			url = url.queryParameter(queryArr[i].split("\\=")[0], queryArr[i].split("\\=")[1]);
+		
+		if(pathArr.length > 1) {
+			String[] queryArr = pathArr[1].split("\\&");
+			for(int i = 0; i < queryArr.length; i++) {
+				url = url.queryParameter(queryArr[i].split("\\=")[0], queryArr[i].split("\\=")[1]);
+			}
 		}
 		webRequest.setUrl(url);							
 		
