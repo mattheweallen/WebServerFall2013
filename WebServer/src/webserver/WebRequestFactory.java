@@ -34,7 +34,6 @@ public class WebRequestFactory {
 		while(!(sCurrentLine = bufferedReader.readLine()).equals("")) {
 			String[] requestHeader = sCurrentLine.split(":");
 			webRequest.addHeader(requestHeader[0].trim(), requestHeader[1].trim());
-			//System.out.println(requestHeader[0].trim() +": " + requestHeader[1].trim());
 		}
 		
 		String[] pathArr = webRequest.getPath().split("\\?");
@@ -43,16 +42,18 @@ public class WebRequestFactory {
 										.host("localhost")
 										.port(88)
 										.path(pathArr[0]);
+				
 		
-//		System.out.println("Path = " + webRequest.getPath());
-//		System.out.println("pathArr Size = " + pathArr.length);
-//		System.out.println("PathArr[0] = " + pathArr[0]);
-		
-		
-		if(pathArr.length > 1) {
+		if(pathArr != null && pathArr.length > 1) {
 			String[] queryArr = pathArr[1].split("\\&");
-			for(int i = 0; i < queryArr.length; i++) {
-				url = url.queryParameter(queryArr[i].split("\\=")[0], queryArr[i].split("\\=")[1]);
+			if(queryArr != null) {
+				for(int i = 0; i < queryArr.length; i++) {
+					String[] name_value = queryArr[i].split("\\=");
+					
+					if(name_value != null && name_value.length > 1) {
+						url = url.queryParameter(queryArr[i].split("\\=")[0], queryArr[i].split("\\=")[1]);
+					}
+				}
 			}
 		}
 		webRequest.setUrl(url);							

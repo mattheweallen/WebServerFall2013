@@ -178,9 +178,6 @@ public class WebRequestHandler {
 		String color = "gray";
 		boolean error = false;
 		
-//		System.out.println("y = " + webRequest.getUrl().getQueryValue("y"));
-//		System.out.println("x = " + webRequest.getUrl().getQueryValue("x"));
-		
 		if(webRequest.getUrl().getQueryValue("x") != null) {
 			if(isInteger(webRequest.getUrl().getQueryValue("x"))) {
 				x = Integer.parseInt(webRequest.getUrl().getQueryValue("x"));
@@ -224,12 +221,6 @@ public class WebRequestHandler {
 			dataOutputStream.writeBytes("Content-Type: text/html\n");
 			dataOutputStream.writeBytes("\n");
 			
-			//System.out.println("Path = " + webRequest.getUrl().getPath());
-			
-			
-			
-			
-			
 			dataOutputStream.writeBytes("<html><head><title>My Super Awesome Math Page</title>");
 			dataOutputStream.writeBytes("<style>");
 			dataOutputStream.writeBytes("table {background-color:" + color + "; text-align:left;} table, th, td { border: 1px solid black;} h1 {color:" + color + "; text-align:left;}");
@@ -251,8 +242,8 @@ public class WebRequestHandler {
 			dataOutputStream.writeBytes("</body></html>");
 		} else {
 			dataOutputStream.writeBytes(webRequest.getVersion().trim()  + " 404 Not Found" + "\n");
-			dataOutputStream.writeBytes("Content-Type: text/html\n");
-			//dataOutputStream.writeBytes("\n");
+			dataOutputStream.writeBytes("Content-Type: text/plain\n");
+			dataOutputStream.writeBytes("\n");
 		}
 	}
 	
@@ -272,13 +263,4 @@ public class WebRequestHandler {
 	public boolean isValidColor(String input) {
 		return htmlcssColorSet.contains(input.trim().toLowerCase());
 	}
-	
-//	
-//	* headerFields will be used in getHeader to generate name value pairs separated by colon, 
-//	 * and terminated with carriage return and line feed. 
-//			 
-//			 * get the header, which will consist of the name value pair request headers from headerFields.
-//			 * TODO update these comments this may be implemented else where this is just to return header value?
-//			 * The name value pairs will be separated by a colon, and terminated with the carriage return and line feed \r\n where \r is carriage return \n is line feed.
-//			 * The end of the header will be indicated by two consecutive carriage return line feed pairs.
 }
